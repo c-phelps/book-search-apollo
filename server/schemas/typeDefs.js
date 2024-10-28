@@ -3,7 +3,6 @@ const typeDefs = `
         _id: ID!
         username: String
         email: String
-        password: String
         savedBooks: [Book]
         bookCount: Int
     }
@@ -11,7 +10,7 @@ const typeDefs = `
         _id: ID!
         bookId: String!
         authors: [String]
-        description: String!
+        description: String
         image: String
         link: String
         title: String!
@@ -25,11 +24,10 @@ const typeDefs = `
     input BookInput
     {
         authors: [String]
+        bookId: String!
         description: String!
         title: String!
-        bookId: string!
         image: String
-        link: string
     }
     # Query
     type Query {
@@ -43,3 +41,5 @@ const typeDefs = `
         removeBook(bookId: String!): User
     }
 `;
+
+module.exports = typeDefs;

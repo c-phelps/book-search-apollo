@@ -31,9 +31,10 @@ const resolvers = {
       return { token, user };
     },
     saveBook: async (parent, { input }, { user }) => {
+      console.log("client side user", user);
       if (user) {
         return User.findOneAndUpdate(
-          { _id: user.id },
+          { _id: user._id },
           { $addToSet: { savedBooks: input } },
           { new: true, runValidators: true }
         );
@@ -43,8 +44,8 @@ const resolvers = {
     removeBook: async (parent, { bookId }, { user }) => {
       if (user) {
         return User.findOneAndUpdate(
-          { _id: user.id },
-          { $pull: { savedBooks: bookId } },
+          { _id: user._id },
+          { $pull: { savedBooks: { bookId } } },
           { new: true, runValidators: true }
         );
       }
