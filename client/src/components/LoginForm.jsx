@@ -42,7 +42,7 @@ const LoginForm = () => {
         variables: { ...userFormData },
       });
 
-      console.log(data);
+      // console.log(data);
       Auth.login(data.addUser.token);
     } catch (err) {
       console.error(err);

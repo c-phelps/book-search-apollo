@@ -31,7 +31,7 @@ const resolvers = {
       return { token, user };
     },
     saveBook: async (parent, { input }, { user }) => {
-      console.log("client side user", user);
+      // console.log("client side user", user);
       if (user) {
         return User.findOneAndUpdate(
           { _id: user._id },
